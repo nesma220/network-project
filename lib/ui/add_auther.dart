@@ -36,15 +36,15 @@ class _AddAutherState extends State<AddAuther> {
                   });
                 },
               ),
-             const SizedBox(height: 6),
+              const SizedBox(height: 6),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'AuthorTitle',
                   hintText: 'Enter Author title',
                 ),
-                onChanged: ( value) {
+                onChanged: (value) {
                   setState(() {
-                    authorTitle =value ;
+                    authorTitle = value;
                   });
                 },
               ),
@@ -65,7 +65,12 @@ class _AddAutherState extends State<AddAuther> {
                 onPressed: () {
                   //send data to the internet
 
-                  API.createAuthor(Author( userId: authorUserId! ,title: authorTitle , body: authorBody)).then((author) {
+                  API
+                      .createAuthor(Author(
+                          userId: authorUserId!,
+                          title: authorTitle,
+                          body: authorBody))
+                      .then((author) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('SUCCESS Add Post')));
                   });

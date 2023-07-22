@@ -14,6 +14,7 @@ class _AddAutherState extends State<AddAuther> {
   String? authorTitle;
   int? authorUserId;
   final AddAutorkey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +74,7 @@ class _AddAutherState extends State<AddAuther> {
                       .then((author) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('SUCCESS Add Post')));
+                    Navigator.of(context).pop();
                   });
                 },
                 child: const Text('Save'),

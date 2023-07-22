@@ -26,4 +26,21 @@ class API {
     }
 return Author.fromJson(json.decode(response.body));
   }
+
+
+
+  static Future<List<Author>> getAllAuthor() async {
+    // business logic to send data to the server
+
+    final Response response = await get(Uri.parse('$_base_url/posts'));
+
+    if (response.statusCode == 200) {
+      print(response.body);
+      final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
+      return parsed.map<Author>((item) => Author.fromJson(item)).toList();
+    } else {
+      print('Error: ${response.statusCode} - ${response.reasonPhrase}');
+      throw Exception("Can't load Author");
+    }
+  }
 }
